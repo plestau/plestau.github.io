@@ -98,8 +98,8 @@ export const projects = [
       itchEmbed: '',
       video: '',
     },
-    cover: '/projects/evad-tale-cover.webp',
-    gallery: ['/projects/evad-tale-2.webp', '/projects/evad-tale-3.webp', '/projects/evad-tale-1.webp'],
+    cover: '/projects/evad-tale-combate.webp',
+    gallery: ['/projects/evad-tale-exploracion.webp', '/projects/evad-tale-cover.webp', '/projects/evad-tale-2.webp', '/projects/evad-tale-1.webp'],
     accent: 'violet',
   },
 
@@ -186,7 +186,7 @@ export const projects = [
     },
     cover: '/projects/rotten-rush-cover.webp',
     coverFit: 'contain',
-    gallery: ['/projects/rotten-rush-2.webp', '/projects/rotten-rush-1.webp', '/projects/rotten-rush-3.webp'],
+    gallery: ['/projects/rotten-rush-2.webp', '/projects/rotten-rush-1.webp', '/projects/rotten-rush-levelup.webp', '/projects/rotten-rush-3.webp'],
     accent: 'cyan',
   },
 ]
