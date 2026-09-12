@@ -25,7 +25,7 @@ export const profile = {
 export const stats = [
   { value: 8, suffix: '', label: 'Proyectos Unity' },
   { value: 3, suffix: '', label: 'Game jams' },
-  { value: 2, suffix: '', label: 'Titulaciones FP' },
+  { value: 3, suffix: '', label: 'Titulaciones FP' },
   { value: 10, suffix: '+', label: 'Tecnologias' },
 ]
 
@@ -250,6 +250,14 @@ export const skillGroups = [
 //  FORMACION
 // ------------------------------------------------------------
 export const education = [
+  {
+    title: 'Master en Desarrollo y Diseno de Videojuegos',
+    org: 'EVAD · Malaga',
+    period: '2025 - Actualidad',
+    note: 'En curso. Proyecto final: Deadline.',
+    tag: 'Master',
+    current: true,
+  },
   {
     title: 'Curso de Especializacion en Desarrollo de Videojuegos',
     org: 'I.E.S. Francisco Ayala · Granada',

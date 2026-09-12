@@ -19,7 +19,10 @@ export default function Education() {
             <Reveal key={item.title} delay={i * 0.1}>
               <li className="relative pb-10 last:pb-0">
                 <span className="absolute -left-[41px] top-1 flex h-5 w-5 items-center justify-center rounded-full border border-cyan/40 bg-void">
-                  <span className="h-2 w-2 rounded-full bg-cyan" />
+                  {item.current && (
+                    <span className="absolute inline-flex h-3 w-3 animate-ping rounded-full bg-lime opacity-70" />
+                  )}
+                  <span className={`h-2 w-2 rounded-full ${item.current ? 'bg-lime' : 'bg-cyan'}`} />
                 </span>
 
                 <div className="rounded-2xl border border-line bg-surface/60 p-6 backdrop-blur transition-colors hover:border-cyan/40">
@@ -28,6 +31,11 @@ export default function Education() {
                       <GraduationCap size={11} /> {item.tag}
                     </span>
                     <span className="font-mono text-xs text-muted">{item.period}</span>
+                    {item.current && (
+                      <span className="rounded-full bg-lime/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-lime ring-1 ring-lime/25">
+                        En curso
+                      </span>
+                    )}
                   </div>
                   <h3 className="mt-3 font-display text-lg font-semibold">{item.title}</h3>
                   {item.org && <p className="mt-1 text-sm text-muted">{item.org}</p>}
