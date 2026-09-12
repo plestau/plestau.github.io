@@ -231,9 +231,9 @@ export const otherProjects = [
   {
     title: 'Juego de gancho 2D',
     year: '2024',
-    kind: 'Primer proyecto',
+    kind: 'Primeros pasos',
     blurb:
-      'Mi primer juego: plataformas 2D con mecanica de balanceo mediante gancho, tres niveles y enemigos con pathing propio.',
+      'Mis primeros pasos en Unity: plataformas 2D con mecanica de balanceo mediante gancho, tres niveles y enemigos con pathing propio.',
     repo: '',
     itch: 'https://plestau.itch.io/juego-de-gancho-2d',
   },
