@@ -150,7 +150,7 @@ export const projects = [
       repo: '',
       itch: 'https://plestau.itch.io/pirenaic-scape',
       itchEmbed: '',
-      video: '', // pega aqui el trailer
+      video: 'https://youtu.be/HQHgLg3Fv8I',
     },
     cover: '',
     gallery: [],
@@ -251,22 +251,22 @@ export const skillGroups = [
 // ------------------------------------------------------------
 export const education = [
   {
-    title: 'Master en Desarrollo de Videojuegos',
-    org: 'Completa con tu centro',
-    period: '2025 - 2026',
-    note: 'Proyecto final: Deadline.',
+    title: 'Curso de Especializacion en Desarrollo de Videojuegos',
+    org: 'I.E.S. Francisco Ayala · Granada',
+    period: '2024 - 2025',
+    note: 'Motores de videojuegos, graficos en tiempo real y realidad virtual y aumentada.',
     tag: 'Videojuegos',
   },
   {
     title: 'Desarrollo de Aplicaciones Multiplataforma (DAM)',
-    org: 'Completa con tu centro',
-    period: '2023 - 2025',
+    org: 'Escuela de Arte de Granada · Granada',
+    period: '2023 - 2024',
     note: 'Aplicaciones nativas, acceso a datos y servicios.',
     tag: 'Titulo FP',
   },
   {
     title: 'Desarrollo de Aplicaciones Web (DAW)',
-    org: 'Completa con tu centro',
+    org: 'I.E.S. Francisco Ayala · Granada',
     period: '2021 - 2023',
     note: 'Front-end, back-end y bases de datos.',
     tag: 'Titulo FP',
