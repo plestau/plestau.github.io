@@ -33,7 +33,9 @@ export const stats = [
 //  PROYECTOS DESTACADOS
 //  status: 'wip' | 'done'
 //  featured: true -> tarjeta grande a todo el ancho
+//  jam: true -> muestra la etiqueta "Juego de jam"
 //  accent: 'cyan' | 'violet' | 'lime'
+//  logo: ruta a un logo que se superpone sobre la portada, abajo y centrado
 //  coverFit: 'contain' -> muestra la portada entera sin recortar, para
 //                        banners y logos muy apaisados. Por defecto recorta.
 //  links.itchEmbed: URL del iframe de itch (Edit game -> Embed options).
@@ -80,6 +82,7 @@ export const projects = [
     year: '2026',
     status: 'done',
     featured: true,
+    jam: true,
     role: 'Programador de combate, inventario y UI',
     tagline:
       'RPG por turnos en el que te quedas encerrado en la escuela tras una jam y tienes que averiguar que esconde la sala de profesores.',
@@ -98,8 +101,9 @@ export const projects = [
       itchEmbed: '',
       video: '',
     },
-    cover: '/projects/evad-tale-combate.webp',
-    gallery: ['/projects/evad-tale-exploracion.webp', '/projects/evad-tale-cover.webp', '/projects/evad-tale-2.webp', '/projects/evad-tale-1.webp'],
+    cover: '/projects/evad-tale-cover.webp',
+    logo: '/projects/evad-tale-logo.svg',
+    gallery: ['/projects/evad-tale-combate.webp', '/projects/evad-tale-exploracion.webp', '/projects/evad-tale-2.webp', '/projects/evad-tale-1.webp'],
     accent: 'violet',
   },
 
@@ -110,6 +114,7 @@ export const projects = [
     year: '2026',
     status: 'done',
     featured: false,
+    jam: true,
     role: 'Programador principal',
     tagline:
       'Arcade tipo Crossy Road: cruza las calles y canales de Venecia en carnaval para entregar la pizza a tiempo.',

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { X, Play, ExternalLink, Maximize2 } from 'lucide-react'
+import { X, Play, ExternalLink, Maximize2, Timer } from 'lucide-react'
 import { GithubIcon, ItchIcon } from './BrandIcons'
 import { accentOf } from './accents'
 import CoverPlaceholder from './CoverPlaceholder'
@@ -90,6 +90,15 @@ export default function ProjectModal({ project, onClose }) {
                   ) : (
                     <CoverPlaceholder title={project.title} accent={a} featured />
                   )}
+                  {project.cover && project.logo && (
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-void/95 via-void/50 to-transparent px-8 pb-6 pt-24">
+                      <img
+                        src={project.logo}
+                        alt={`Logo de ${project.title}`}
+                        className="w-1/2 max-w-[460px] drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]"
+                      />
+                    </div>
+                  )}
                   {project.links?.itchEmbed && (
                     <button
                       onClick={() => setPlaying(true)}
@@ -108,6 +117,11 @@ export default function ProjectModal({ project, onClose }) {
               <div className="flex flex-wrap items-center gap-3">
                 <h3 className="font-display text-3xl font-bold tracking-tight">{project.title}</h3>
                 <span className={`font-mono text-xs ${a.text}`}>{project.year}</span>
+                {project.jam && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-cyan/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-cyan ring-1 ring-cyan/25">
+                    <Timer size={11} /> Juego de jam
+                  </span>
+                )}
               </div>
               <p className="mt-1 font-mono text-xs text-muted">
                 {[project.studio, project.role].filter(Boolean).join(' \u00b7 ')}

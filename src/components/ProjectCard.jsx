@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { ArrowUpRight, Gamepad2 } from 'lucide-react'
+import { ArrowUpRight, Gamepad2, Timer } from 'lucide-react'
 import CoverPlaceholder from './CoverPlaceholder'
 import { accentOf } from './accents'
 
@@ -61,6 +61,15 @@ export default function ProjectCard({ project, featured = false, onOpen }) {
         ) : (
           <CoverPlaceholder title={project.title} accent={a} featured={featured} />
         )}
+        {project.cover && project.logo && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-void/95 via-void/50 to-transparent px-6 pb-5 pt-20">
+            <img
+              src={project.logo}
+              alt={`Logo de ${project.title}`}
+              className={`${featured ? 'w-[46%] max-w-[440px]' : 'w-3/5'} drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]`}
+            />
+          </div>
+        )}
 
         <div className="absolute left-4 top-4 flex gap-2">
           <span
@@ -72,6 +81,11 @@ export default function ProjectCard({ project, featured = false, onOpen }) {
           >
             {project.status === 'wip' ? 'En desarrollo' : 'Terminado'}
           </span>
+          {project.jam && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-void/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-cyan ring-1 ring-cyan/25 backdrop-blur">
+              <Timer size={11} /> Juego de jam
+            </span>
+          )}
           {project.links?.itchEmbed && (
             <span className="inline-flex items-center gap-1 rounded-full bg-void/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-cyan ring-1 ring-cyan/25 backdrop-blur">
               <Gamepad2 size={11} /> Jugable
