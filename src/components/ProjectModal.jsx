@@ -1,18 +1,32 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { X, Play, ExternalLink } from 'lucide-react'
+import { X, Play, ExternalLink, Maximize2 } from 'lucide-react'
 import { GithubIcon, ItchIcon } from './BrandIcons'
 import { accentOf } from './accents'
 import CoverPlaceholder from './CoverPlaceholder'
+import Lightbox from './Lightbox'
 
 export default function ProjectModal({ project, onClose }) {
   const [playing, setPlaying] = useState(false)
+  const [ampliada, setAmpliada] = useState(null)
+
+  // Al abrir otro proyecto se reinicia el estado interno. Va en su propio
+  // efecto: si compartiera el de abajo, que depende de `ampliada`, se
+  // anularia a si mismo en cuanto se ampliara una captura.
+  useEffect(() => {
+    setPlaying(false)
+    setAmpliada(null)
+  }, [project])
 
   // Cierra con Escape y bloquea el scroll del fondo mientras esta abierto
   useEffect(() => {
     if (!project) return
-    setPlaying(false)
-    const onKey = (e) => e.key === 'Escape' && onClose()
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return
+      // Si hay una captura ampliada, Escape solo cierra esa
+      if (ampliada !== null) setAmpliada(null)
+      else onClose()
+    }
     document.addEventListener('keydown', onKey)
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -20,7 +34,7 @@ export default function ProjectModal({ project, onClose }) {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = prev
     }
-  }, [project, onClose])
+  }, [project, onClose, ampliada])
 
   const a = project ? accentOf(project.accent) : null
 
@@ -119,14 +133,24 @@ export default function ProjectModal({ project, onClose }) {
 
               {project.gallery?.length > 0 && (
                 <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {project.gallery.map((src) => (
-                    <img
+                  {project.gallery.map((src, i) => (
+                    <button
                       key={src}
-                      src={src}
-                      alt={`Captura de ${project.title}`}
-                      loading="lazy"
-                      className="aspect-video w-full rounded-lg border border-line object-cover"
-                    />
+                      type="button"
+                      onClick={() => setAmpliada(i)}
+                      aria-label={`Ampliar captura ${i + 1} de ${project.title}`}
+                      className="group/thumb relative overflow-hidden rounded-lg border border-line transition-colors hover:border-cyan/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+                    >
+                      <img
+                        src={src}
+                        alt={`Captura de ${project.title}`}
+                        loading="lazy"
+                        className="aspect-video w-full object-cover transition-transform duration-500 group-hover/thumb:scale-105"
+                      />
+                      <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-void/60 opacity-0 transition-opacity group-hover/thumb:opacity-100">
+                        <Maximize2 size={18} className="text-ink" />
+                      </span>
+                    </button>
                   ))}
                 </div>
               )}
@@ -176,6 +200,14 @@ export default function ProjectModal({ project, onClose }) {
               </div>
             </div>
           </motion.div>
+
+          <Lightbox
+            images={project.gallery ?? []}
+            index={ampliada}
+            title={project.title}
+            onClose={() => setAmpliada(null)}
+            onIndex={setAmpliada}
+          />
         </motion.div>
       )}
     </AnimatePresence>
