@@ -34,6 +34,8 @@ export const stats = [
 //  status: 'wip' | 'done'
 //  featured: true -> tarjeta grande a todo el ancho
 //  accent: 'cyan' | 'violet' | 'lime'
+//  coverFit: 'contain' -> muestra la portada entera sin recortar, para
+//                        banners y logos muy apaisados. Por defecto recorta.
 //  links.itchEmbed: URL del iframe de itch (Edit game -> Embed options).
 //                   Solo funciona con builds WebGL; con builds de escritorio
 //                   se deja vacio y la tarjeta no ofrece jugar.
@@ -125,8 +127,9 @@ export const projects = [
       itchEmbed: '',
       video: '',
     },
-    cover: '/projects/crossy-venice-2.webp',
-    gallery: ['/projects/crossy-venice-1.webp', '/projects/crossy-venice-3.webp', '/projects/crossy-venice-cover.webp'],
+    cover: '/projects/crossy-venice-cover.webp',
+    coverFit: 'contain',
+    gallery: ['/projects/crossy-venice-2.webp', '/projects/crossy-venice-1.webp', '/projects/crossy-venice-3.webp'],
     accent: 'lime',
   },
 
@@ -152,8 +155,9 @@ export const projects = [
       itchEmbed: '',
       video: 'https://youtu.be/HQHgLg3Fv8I',
     },
-    cover: '/projects/pirenaic-scape-1.webp',
-    gallery: ['/projects/pirenaic-scape-2.webp', '/projects/pirenaic-scape-3.webp', '/projects/pirenaic-scape-cover.webp'],
+    cover: '/projects/pirenaic-scape-cover.webp',
+    coverFit: 'contain',
+    gallery: ['/projects/pirenaic-scape-1.webp', '/projects/pirenaic-scape-2.webp', '/projects/pirenaic-scape-3.webp'],
     accent: 'violet',
   },
 
@@ -180,8 +184,9 @@ export const projects = [
       itchEmbed: '',
       video: '',
     },
-    cover: '/projects/rotten-rush-2.webp',
-    gallery: ['/projects/rotten-rush-1.webp', '/projects/rotten-rush-3.webp', '/projects/rotten-rush-cover.webp'],
+    cover: '/projects/rotten-rush-cover.webp',
+    coverFit: 'contain',
+    gallery: ['/projects/rotten-rush-2.webp', '/projects/rotten-rush-1.webp', '/projects/rotten-rush-3.webp'],
     accent: 'cyan',
   },
 ]

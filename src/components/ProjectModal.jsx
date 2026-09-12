@@ -69,7 +69,9 @@ export default function ProjectModal({ project, onClose }) {
                     <img
                       src={project.cover}
                       alt={`Captura de ${project.title}`}
-                      className="h-full w-full object-cover"
+                      className={`h-full w-full ${
+                        project.coverFit === 'contain' ? 'object-contain p-8' : 'object-cover'
+                      }`}
                     />
                   ) : (
                     <CoverPlaceholder title={project.title} accent={a} featured />

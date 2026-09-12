@@ -52,7 +52,11 @@ export default function ProjectCard({ project, featured = false, onOpen }) {
             src={project.cover}
             alt={`Captura de ${project.title}`}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className={`h-full w-full transition-transform duration-700 ${
+              project.coverFit === 'contain'
+                ? 'object-contain p-6 group-hover:scale-[1.03]'
+                : 'object-cover group-hover:scale-105'
+            }`}
           />
         ) : (
           <CoverPlaceholder title={project.title} accent={a} featured={featured} />
