@@ -48,16 +48,26 @@ export default function ProjectCard({ project, featured = false, onOpen }) {
         }`}
       >
         {project.cover ? (
+          <>
+            {project.coverBackdrop && (
+              <img
+                src={project.cover}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full scale-125 object-cover opacity-70 blur-2xl"
+              />
+            )}
           <img
             src={project.cover}
             alt={`Captura de ${project.title}`}
             loading="lazy"
             className={`h-full w-full transition-transform duration-700 ${
               project.coverFit === 'contain'
-                ? 'object-contain p-6 group-hover:scale-[1.03]'
+                ? `relative object-contain group-hover:scale-[1.03] ${project.coverBackdrop ? 'p-0 [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]' : 'p-6'}`
                 : 'object-cover group-hover:scale-105'
             }`}
           />
+          </>
         ) : (
           <CoverPlaceholder title={project.title} accent={a} featured={featured} />
         )}

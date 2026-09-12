@@ -80,13 +80,23 @@ export default function ProjectModal({ project, onClose }) {
               ) : (
                 <>
                   {project.cover ? (
+                    <>
+                      {project.coverBackdrop && (
+                        <img
+                          src={project.cover}
+                          alt=""
+                          aria-hidden="true"
+                          className="absolute inset-0 h-full w-full scale-125 object-cover opacity-70 blur-2xl"
+                        />
+                      )}
                     <img
                       src={project.cover}
                       alt={`Captura de ${project.title}`}
                       className={`h-full w-full ${
-                        project.coverFit === 'contain' ? 'object-contain p-8' : 'object-cover'
+                        project.coverFit === 'contain' ? `relative object-contain ${project.coverBackdrop ? 'p-0 [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]' : 'p-8'}` : 'object-cover'
                       }`}
                     />
+                    </>
                   ) : (
                     <CoverPlaceholder title={project.title} accent={a} featured />
                   )}

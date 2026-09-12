@@ -38,6 +38,8 @@ export const stats = [
 //  logo: ruta a un logo que se superpone sobre la portada, abajo y centrado
 //  coverFit: 'contain' -> muestra la portada entera sin recortar, para
 //                        banners y logos muy apaisados. Por defecto recorta.
+//  coverBackdrop: true -> con coverFit 'contain', rellena el hueco sobrante con
+//                         una copia desenfocada de la propia portada
 //  links.itchEmbed: URL del iframe de itch (Edit game -> Embed options).
 //                   Solo funciona con builds WebGL; con builds de escritorio
 //                   se deja vacio y la tarjeta no ofrece jugar.
@@ -134,7 +136,7 @@ export const projects = [
     },
     cover: '/projects/crossy-venice-cover.webp',
     coverFit: 'contain',
-    gallery: ['/projects/crossy-venice-2.webp', '/projects/crossy-venice-1.webp', '/projects/crossy-venice-3.webp'],
+    gallery: ['/projects/crossy-venice-2.webp', '/projects/crossy-venice-1.webp', '/projects/crossy-venice-gameplay.webp'],
     accent: 'lime',
   },
 
@@ -162,7 +164,8 @@ export const projects = [
     },
     cover: '/projects/pirenaic-scape-cover.webp',
     coverFit: 'contain',
-    gallery: ['/projects/pirenaic-scape-1.webp', '/projects/pirenaic-scape-2.webp', '/projects/pirenaic-scape-3.webp'],
+    coverBackdrop: true,
+    gallery: ['/projects/pirenaic-scape-gameplay.webp', '/projects/pirenaic-scape-inventario.webp', '/projects/pirenaic-scape-1.webp', '/projects/pirenaic-scape-2.webp', '/projects/pirenaic-scape-3.webp'],
     accent: 'violet',
   },
 
@@ -191,6 +194,7 @@ export const projects = [
     },
     cover: '/projects/rotten-rush-cover.webp',
     coverFit: 'contain',
+    coverBackdrop: true,
     gallery: ['/projects/rotten-rush-2.webp', '/projects/rotten-rush-1.webp', '/projects/rotten-rush-levelup.webp', '/projects/rotten-rush-3.webp'],
     accent: 'cyan',
   },
