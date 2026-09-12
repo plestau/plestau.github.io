@@ -131,6 +131,39 @@ export const projects = [
 ]
 
 // ------------------------------------------------------------
+//  OTROS PROYECTOS
+//  Lista compacta para los trabajos menores: practicas, game jams y
+//  pruebas. Dan contexto y volumen sin robar atencion a los buenos.
+//  Si alguno crece, pasalo al array `projects` de arriba.
+// ------------------------------------------------------------
+export const otherProjects = [
+  {
+    title: 'Nombre del proyecto',
+    year: '2025',
+    kind: 'Game jam', // Game jam | Practica | Prototipo | AR/VR
+    blurb: 'Una linea: que era y que aprendiste.',
+    repo: '',
+    itch: '',
+  },
+  {
+    title: 'Nombre del proyecto',
+    year: '2024',
+    kind: 'Prototipo',
+    blurb: 'Una linea: que era y que aprendiste.',
+    repo: '',
+    itch: '',
+  },
+  {
+    title: 'Nombre del proyecto',
+    year: '2024',
+    kind: 'Practica',
+    blurb: 'Una linea: que era y que aprendiste.',
+    repo: '',
+    itch: '',
+  },
+]
+
+// ------------------------------------------------------------
 //  SKILLS
 // ------------------------------------------------------------
 export const skillGroups = [

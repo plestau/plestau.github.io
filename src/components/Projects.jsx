@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { projects } from '../data/content'
 import ProjectCard from './ProjectCard'
 import ProjectModal from './ProjectModal'
+import OtherProjects from './OtherProjects'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 
@@ -31,6 +32,8 @@ export default function Projects() {
             </Reveal>
           ))}
         </div>
+
+        <OtherProjects />
       </div>
 
       <ProjectModal project={selected} onClose={() => setSelected(null)} />
