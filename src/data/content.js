@@ -15,7 +15,7 @@ export const profile = {
   tagline:
     'Programo videojuegos en Unity y aplicaciones web y multiplataforma. Me interesa la parte de sistemas: que el gameplay sea solido, legible y facil de extender.',
   location: 'Espana',
-  email: 'pablitolestau3@gmail.com',
+  email: 'pablolestau@outlook.com',
   github: 'https://github.com/plestau',
   linkedin: 'https://es.linkedin.com/in/pablo-lestau-martin-862ba51b7',
   itch: 'https://plestau.itch.io',
@@ -97,7 +97,7 @@ export const projects = [
       video: '',
     },
     cover: '/projects/evad-tale-cover.webp',
-    gallery: ['/projects/evad-tale-1.webp'],
+    gallery: ['/projects/evad-tale-2.webp', '/projects/evad-tale-3.webp', '/projects/evad-tale-1.webp'],
     accent: 'violet',
   },
 
@@ -126,7 +126,7 @@ export const projects = [
       video: '',
     },
     cover: '/projects/crossy-venice-2.webp',
-    gallery: ['/projects/crossy-venice-cover.webp', '/projects/crossy-venice-3.webp'],
+    gallery: ['/projects/crossy-venice-1.webp', '/projects/crossy-venice-3.webp', '/projects/crossy-venice-cover.webp'],
     accent: 'lime',
   },
 
@@ -152,8 +152,8 @@ export const projects = [
       itchEmbed: '',
       video: 'https://youtu.be/HQHgLg3Fv8I',
     },
-    cover: '',
-    gallery: [],
+    cover: '/projects/pirenaic-scape-1.webp',
+    gallery: ['/projects/pirenaic-scape-2.webp', '/projects/pirenaic-scape-3.webp', '/projects/pirenaic-scape-cover.webp'],
     accent: 'violet',
   },
 
@@ -180,8 +180,8 @@ export const projects = [
       itchEmbed: '',
       video: '',
     },
-    cover: '',
-    gallery: [],
+    cover: '/projects/rotten-rush-2.webp',
+    gallery: ['/projects/rotten-rush-1.webp', '/projects/rotten-rush-3.webp', '/projects/rotten-rush-cover.webp'],
     accent: 'cyan',
   },
 ]
