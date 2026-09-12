@@ -125,7 +125,7 @@ export const projects = [
     highlights: [
       'Generacion de los carriles de trafico y obstaculos al estilo Crossy Road',
       'Control del personaje con movimiento por casillas',
-      'Sistema de puntuacion y condiciones de derrota',
+      'Juego hecho en 3 dias',
     ],
     tech: ['Unity', 'C#', 'Low poly', 'Arcade'],
     links: {
@@ -136,7 +136,7 @@ export const projects = [
     },
     cover: '/projects/crossy-venice-cover.webp',
     coverFit: 'contain',
-    gallery: ['/projects/crossy-venice-2.webp', '/projects/crossy-venice-1.webp', '/projects/crossy-venice-gameplay.webp'],
+    gallery: ['/projects/crossy-venice-gameplay-2.webp', '/projects/crossy-venice-2.webp', '/projects/crossy-venice-1.webp', '/projects/crossy-venice-gameplay.webp'],
     accent: 'lime',
   },
 
@@ -148,14 +148,17 @@ export const projects = [
     status: 'done',
     featured: false,
     role: 'Programador, todo salvo arte y modelos',
-    tagline: 'Terror en primera persona ambientado en los Pirineos.',
+    tagline:
+      'Puzles, terror y sigilo en primera persona en los bosques de los Pirineos.',
     description:
-      'Juego de terror en primera persona. Me encargue de toda la programacion; el arte y los modelos vinieron de fuera. Construido sobre HDRP, lo que obligo a cuidar el rendimiento y el peso de los assets.',
+      'Juego de puzles, terror y sigilo en primera persona. Hay que avanzar sin ser descubierto, resolver puzles interactuando con el entorno y gestionar bien lo que llevas en el inventario. Me encargue de toda la programacion; el arte y los modelos vinieron de fuera. Construido sobre HDRP, lo que obligo a cuidar el rendimiento y el peso de los assets.',
     highlights: [
-      'Sistema de interaccion e inventario en primera persona',
+      'Mecanicas de sigilo para avanzar sin ser detectado por los enemigos',
+      'Puzles basados en la interaccion con objetos del entorno',
+      'Inventario con opciones para usar, equipar y combinar objetos',
       'Optimizacion del build: texturas 8K reducidas a 2K y compresion activada',
     ],
-    tech: ['Unity', 'C#', 'HDRP', 'Primera persona', 'Terror'],
+    tech: ['Unity', 'C#', 'HDRP', 'Primera persona', 'Terror', 'Sigilo', 'Puzles'],
     links: {
       repo: '',
       itch: 'https://plestau.itch.io/pirenaic-scape',
@@ -178,12 +181,14 @@ export const projects = [
     featured: false,
     role: 'Programador, todo salvo arte',
     tagline:
-      'Plataformas 2D de puntuacion: salta, golpea enemigos y esquiva obstaculos para llegar lo mas lejos posible.',
+      'Mi primer proyecto terminado: plataformas 2D en pixel art donde subes de nivel, eliges poderes o te la juegas a la ruleta.',
     description:
-      'Plataformas 2D en pixel art donde el objetivo es conseguir la puntuacion mas alta saltando, golpeando enemigos y esquivando obstaculos. Programe todo el juego; el arte lo hizo otra persona.',
+      'Mi primer proyecto terminado. Plataformas 2D en pixel art en el que avanzas saltando, golpeando enemigos y esquivando obstaculos para llegar lo mas lejos posible. Al subir de nivel eliges entre varias mejoras, o te arriesgas con una ruleta que te da un poder aleatorio. Programe todo el juego; el arte lo hizo otra persona.',
     highlights: [
+      'Sistema de subida de niveles con experiencia por distancia recorrida',
+      'Eleccion de poderes al subir de nivel, como salto extra o mas experiencia por metro',
+      'Ruleta de poderes aleatorios como alternativa arriesgada a elegir mejora',
       'Control de plataformas 2D con salto y ataque cuerpo a cuerpo',
-      'Sistema de puntuacion y progresion de dificultad',
     ],
     tech: ['Unity', 'C#', '2D', 'Pixel art'],
     links: {
