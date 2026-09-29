@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 
-/** Envoltorio que anima el contenido cuando entra en pantalla al hacer scroll. */
-export default function Reveal({ children, delay = 0, y = 26, className = '' }) {
+/** Envoltorio que hace aparecer el contenido suavemente cuando entra en pantalla. */
+export default function Reveal({ children, delay = 0, y = 16, className = '' }) {
   return (
     <motion.div
       className={className}

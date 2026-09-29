@@ -43,7 +43,7 @@ export default function Lightbox({ images, index, title, onClose, onIndex }) {
         <motion.div
           ref={capaRef}
           tabIndex={-1}
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-void/95 p-4 outline-none backdrop-blur-sm sm:p-10"
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-bg/95 p-4 outline-none sm:p-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -55,7 +55,7 @@ export default function Lightbox({ images, index, title, onClose, onIndex }) {
           <button
             onClick={onClose}
             aria-label="Cerrar"
-            className="absolute right-4 top-4 z-10 rounded-lg bg-surface/80 p-2.5 text-muted ring-1 ring-line backdrop-blur transition-colors hover:text-ink"
+            className="absolute right-4 top-4 z-10 rounded-sm bg-surface p-2.5 text-muted ring-1 ring-line transition-colors hover:text-ink"
           >
             <X size={20} />
           </button>
@@ -68,7 +68,7 @@ export default function Lightbox({ images, index, title, onClose, onIndex }) {
                   onIndex((index - 1 + total) % total)
                 }}
                 aria-label="Anterior"
-                className="absolute left-3 z-10 rounded-full bg-surface/80 p-3 text-muted ring-1 ring-line backdrop-blur transition-colors hover:text-ink sm:left-6"
+                className="absolute left-3 z-10 rounded-sm bg-surface p-3 text-muted ring-1 ring-line transition-colors hover:text-ink sm:left-6"
               >
                 <ChevronLeft size={22} />
               </button>
@@ -78,7 +78,7 @@ export default function Lightbox({ images, index, title, onClose, onIndex }) {
                   onIndex((index + 1) % total)
                 }}
                 aria-label="Siguiente"
-                className="absolute right-3 z-10 rounded-full bg-surface/80 p-3 text-muted ring-1 ring-line backdrop-blur transition-colors hover:text-ink sm:right-6"
+                className="absolute right-3 z-10 rounded-sm bg-surface p-3 text-muted ring-1 ring-line transition-colors hover:text-ink sm:right-6"
               >
                 <ChevronRight size={22} />
               </button>
@@ -93,11 +93,11 @@ export default function Lightbox({ images, index, title, onClose, onIndex }) {
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="max-h-full max-w-full rounded-lg object-contain shadow-2xl"
+            className="max-h-full max-w-full rounded-sm object-contain"
           />
 
           {total > 1 && (
-            <span className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-surface/80 px-3.5 py-1.5 font-mono text-xs text-muted ring-1 ring-line backdrop-blur">
+            <span className="absolute bottom-5 left-1/2 -translate-x-1/2 text-sm tabular-nums text-muted">
               {index + 1} / {total}
             </span>
           )}

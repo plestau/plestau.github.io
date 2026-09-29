@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#05060a"/>
-  <text x="32" y="43" font-family="monospace" font-size="30" font-weight="bold"
-        fill="#22d3ee" text-anchor="middle">PL</text>
+  <rect width="64" height="64" rx="6" fill="#0e0d0c"/>
+  <text x="32" y="42" font-family="Bahnschrift, 'Arial Narrow', sans-serif" font-size="30" font-weight="700"
+        fill="#ece8e1" text-anchor="middle">PL</text>
+  <rect x="18" y="48" width="28" height="3" fill="#e8a33d"/>
 </svg>

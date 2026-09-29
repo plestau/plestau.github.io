@@ -4,8 +4,7 @@ import { Menu, X } from 'lucide-react'
 
 const links = [
   { href: '#proyectos', label: 'Proyectos' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#formacion', label: 'Formacion' },
+  { href: '#perfil', label: 'Perfil' },
   { href: '#contacto', label: 'Contacto' },
 ]
 
@@ -41,43 +40,38 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'border-b border-line/70 bg-void/80 backdrop-blur-xl' : 'border-b border-transparent'
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled || open ? 'border-line bg-bg/95' : 'border-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="group font-display text-lg font-bold tracking-tight">
-          <span className="text-cyan">{'<'}</span>
-          PL
-          <span className="text-cyan">{' />'}</span>
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <a href="#top" className="display text-lg uppercase tracking-[0.08em]">
+          Pablo Lestau
         </a>
 
-        <ul className="hidden items-center gap-1 md:flex">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className={`relative rounded-lg px-4 py-2 text-sm transition-colors ${
-                  active === l.href.slice(1) ? 'text-ink' : 'text-muted hover:text-ink'
-                }`}
-              >
-                {active === l.href.slice(1) && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-lg bg-surface-2 ring-1 ring-line"
-                    transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                  />
-                )}
-                <span className="relative">{l.label}</span>
-              </a>
-            </li>
-          ))}
+        <ul className="hidden items-center gap-9 md:flex">
+          {links.map((l) => {
+            const isActive = active === l.href.slice(1)
+            return (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className={`relative py-1 text-sm transition-colors ${
+                    isActive ? 'text-ink' : 'text-muted hover:text-ink'
+                  }`}
+                >
+                  {l.label}
+                  {isActive && <span className="absolute inset-x-0 -bottom-0.5 h-px bg-accent" />}
+                </a>
+              </li>
+            )
+          })}
         </ul>
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="rounded-lg p-2 text-muted transition-colors hover:text-ink md:hidden"
-          aria-label={open ? 'Cerrar menu' : 'Abrir menu'}
+          className="-mr-2 p-2 text-muted transition-colors hover:text-ink md:hidden"
+          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -91,14 +85,14 @@ export default function Nav() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-line bg-void/95 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-line md:hidden"
           >
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block px-6 py-4 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-ink"
+                  className="display block px-6 py-4 text-3xl text-ink transition-colors hover:text-accent"
                 >
                   {l.label}
                 </a>

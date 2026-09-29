@@ -1,15 +1,11 @@
 import Reveal from './Reveal'
 
-/** Cabecera comun de seccion: numero, titulo y subtitulo. */
-export default function SectionHeading({ index, title, subtitle }) {
+/** Cabecera comun de seccion: titulo grande a la izquierda y entradilla a la derecha. */
+export default function SectionHeading({ title, intro }) {
   return (
-    <Reveal className="mb-12">
-      <div className="flex items-center gap-3 mb-4">
-        <span className="font-mono text-xs text-cyan tracking-[0.25em]">{index}</span>
-        <span className="h-px flex-1 max-w-24 bg-gradient-to-r from-cyan/60 to-transparent" />
-      </div>
-      <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight">{title}</h2>
-      {subtitle && <p className="mt-4 max-w-2xl text-muted leading-relaxed">{subtitle}</p>}
+    <Reveal className="mb-16 grid gap-6 sm:mb-20 lg:grid-cols-12 lg:items-end">
+      <h2 className="display text-6xl sm:text-7xl lg:col-span-6">{title}</h2>
+      {intro && <p className="max-w-xl leading-relaxed text-muted lg:col-span-6 lg:justify-self-end">{intro}</p>}
     </Reveal>
   )
 }

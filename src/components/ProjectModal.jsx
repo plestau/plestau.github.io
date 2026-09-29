@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { X, Play, ExternalLink, Maximize2, Timer } from 'lucide-react'
+import { X, Play, ExternalLink, Maximize2 } from 'lucide-react'
 import { GithubIcon, ItchIcon } from './BrandIcons'
-import { accentOf } from './accents'
-import CoverPlaceholder from './CoverPlaceholder'
+import Cover from './Cover'
 import Lightbox from './Lightbox'
+import { projectLabel } from './projectUtils'
 
 export default function ProjectModal({ project, onClose }) {
   const [playing, setPlaying] = useState(false)
@@ -36,13 +36,11 @@ export default function ProjectModal({ project, onClose }) {
     }
   }, [project, onClose, ampliada])
 
-  const a = project ? accentOf(project.accent) : null
-
   return (
     <AnimatePresence>
       {project && (
         <motion.div
-          className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-void/85 p-4 backdrop-blur-md sm:p-8"
+          className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-bg/90 p-4 sm:p-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -52,23 +50,23 @@ export default function ProjectModal({ project, onClose }) {
           aria-label={project.title}
         >
           <motion.div
-            className="relative my-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl"
-            initial={{ opacity: 0, y: 24, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.97 }}
+            className="relative my-auto w-full max-w-4xl overflow-hidden rounded-sm border border-line bg-surface"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={onClose}
               aria-label="Cerrar"
-              className="absolute right-4 top-4 z-10 rounded-lg bg-void/70 p-2 text-muted backdrop-blur transition-colors hover:text-ink"
+              className="absolute right-4 top-4 z-10 rounded-sm bg-bg/80 p-2 text-muted transition-colors hover:text-ink"
             >
               <X size={18} />
             </button>
 
-            {/* Zona superior: juego incrustado, portada o vacio */}
-            <div className="relative aspect-video w-full border-b border-line bg-surface-2">
+            {/* Zona superior: juego incrustado o portada */}
+            <div className="relative aspect-video w-full overflow-hidden border-b border-line bg-surface-2">
               {playing && project.links?.itchEmbed ? (
                 <iframe
                   src={project.links.itchEmbed}
@@ -79,42 +77,13 @@ export default function ProjectModal({ project, onClose }) {
                 />
               ) : (
                 <>
-                  {project.cover ? (
-                    <>
-                      {project.coverBackdrop && (
-                        <img
-                          src={project.cover}
-                          alt=""
-                          aria-hidden="true"
-                          className="absolute inset-0 h-full w-full scale-125 object-cover opacity-70 blur-2xl"
-                        />
-                      )}
-                    <img
-                      src={project.cover}
-                      alt={`Captura de ${project.title}`}
-                      className={`h-full w-full ${
-                        project.coverFit === 'contain' ? `relative object-contain ${project.coverBackdrop ? 'p-0 [mask-image:linear-gradient(to_bottom,transparent,black_22%,black_78%,transparent)]' : 'p-8'}` : 'object-cover'
-                      }`}
-                    />
-                    </>
-                  ) : (
-                    <CoverPlaceholder title={project.title} accent={a} featured />
-                  )}
-                  {project.cover && project.logo && (
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-void/95 via-void/50 to-transparent px-8 pb-6 pt-24">
-                      <img
-                        src={project.logo}
-                        alt={`Logo de ${project.title}`}
-                        className="w-1/2 max-w-[460px] drop-shadow-[0_2px_14px_rgba(0,0,0,0.9)]"
-                      />
-                    </div>
-                  )}
+                  <Cover project={project} size="modal" zoom={false} />
                   {project.links?.itchEmbed && (
                     <button
                       onClick={() => setPlaying(true)}
-                      className="absolute inset-0 flex items-center justify-center bg-void/50 transition-colors hover:bg-void/30"
+                      className="absolute inset-0 flex items-center justify-center bg-bg/50 transition-colors hover:bg-bg/30"
                     >
-                      <span className="inline-flex items-center gap-2 rounded-xl bg-cyan px-6 py-3 font-medium text-void transition-transform hover:scale-105">
+                      <span className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-bg">
                         <Play size={18} fill="currentColor" /> Jugar en el navegador
                       </span>
                     </button>
@@ -123,31 +92,22 @@ export default function ProjectModal({ project, onClose }) {
               )}
             </div>
 
-            <div className="p-7 sm:p-9">
-              <div className="flex flex-wrap items-center gap-3">
-                <h3 className="font-display text-3xl font-bold tracking-tight">{project.title}</h3>
-                <span className={`font-mono text-xs ${a.text}`}>{project.year}</span>
-                {project.jam && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-cyan/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-cyan ring-1 ring-cyan/25">
-                    <Timer size={11} /> Juego de jam
-                  </span>
-                )}
-              </div>
-              <p className="mt-1 font-mono text-xs text-muted">
-                {[project.studio, project.role].filter(Boolean).join(' \u00b7 ')}
-              </p>
+            <div className="p-7 sm:p-10">
+              <p className="eyebrow text-accent">{projectLabel(project)}</p>
+              <h3 className="display mt-3 text-5xl">{project.title}</h3>
+              <p className="mt-3 text-sm text-muted">{[project.role, project.studio].filter(Boolean).join(' · ')}</p>
 
-              <p className="mt-6 leading-relaxed text-muted">{project.description}</p>
+              <p className="mt-8 leading-relaxed text-ink/85">{project.description}</p>
 
               {project.highlights?.length > 0 && (
                 <>
-                  <h4 className="mt-8 font-display text-sm font-semibold uppercase tracking-wider text-ink">
-                    Lo que construi
-                  </h4>
-                  <ul className="mt-4 space-y-2.5">
+                  <h4 className="eyebrow mt-10 text-muted">Lo que programé</h4>
+                  <ul className="mt-4 space-y-2.5 border-t border-line pt-5">
                     {project.highlights.map((h) => (
                       <li key={h} className="flex gap-3 text-sm leading-relaxed text-muted">
-                        <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${a.dot}`} />
+                        <span className="text-accent" aria-hidden="true">
+                          —
+                        </span>
                         {h}
                       </li>
                     ))}
@@ -156,14 +116,14 @@ export default function ProjectModal({ project, onClose }) {
               )}
 
               {project.gallery?.length > 0 && (
-                <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3">
                   {project.gallery.map((src, i) => (
                     <button
                       key={src}
                       type="button"
                       onClick={() => setAmpliada(i)}
                       aria-label={`Ampliar captura ${i + 1} de ${project.title}`}
-                      className="group/thumb relative overflow-hidden rounded-lg border border-line transition-colors hover:border-cyan/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+                      className="group/thumb relative overflow-hidden rounded-sm border border-line transition-colors hover:border-muted"
                     >
                       <img
                         src={src}
@@ -171,7 +131,7 @@ export default function ProjectModal({ project, onClose }) {
                         loading="lazy"
                         className="aspect-video w-full object-cover transition-transform duration-500 group-hover/thumb:scale-105"
                       />
-                      <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-void/60 opacity-0 transition-opacity group-hover/thumb:opacity-100">
+                      <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-bg/60 opacity-0 transition-opacity group-hover/thumb:opacity-100">
                         <Maximize2 size={18} className="text-ink" />
                       </span>
                     </button>
@@ -179,49 +139,42 @@ export default function ProjectModal({ project, onClose }) {
                 </div>
               )}
 
-              <div className="mt-8 flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className={`rounded-md px-2.5 py-1 font-mono text-[11px] ring-1 ring-inset ${a.chip}`}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+              <p className="mt-10 text-xs leading-relaxed text-muted">{project.tech.join(' · ')}</p>
 
-              <div className="mt-8 flex flex-wrap gap-3 border-t border-line pt-7">
-                {project.links?.itch && (
-                  <a
-                    href={project.links.itch}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl bg-cyan px-5 py-2.5 text-sm font-medium text-void transition-transform hover:scale-[1.03]"
-                  >
-                    <ItchIcon size={16} /> Ver en itch.io
-                  </a>
-                )}
-                {project.links?.repo && (
-                  <a
-                    href={project.links.repo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-line px-5 py-2.5 text-sm transition-colors hover:border-cyan/50 hover:bg-surface-2"
-                  >
-                    <GithubIcon size={16} /> Codigo
-                  </a>
-                )}
-                {project.links?.video && (
-                  <a
-                    href={project.links.video}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl border border-line px-5 py-2.5 text-sm transition-colors hover:border-cyan/50 hover:bg-surface-2"
-                  >
-                    <ExternalLink size={16} /> Trailer
-                  </a>
-                )}
-              </div>
+              {(project.links?.itch || project.links?.repo || project.links?.video) && (
+                <div className="mt-8 flex flex-wrap gap-3 border-t border-line pt-8">
+                  {project.links?.itch && (
+                    <a
+                      href={project.links.itch}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-sm bg-ink px-5 py-2.5 text-sm font-semibold text-bg transition-colors hover:bg-accent"
+                    >
+                      <ItchIcon size={16} /> Ver en itch.io
+                    </a>
+                  )}
+                  {project.links?.repo && (
+                    <a
+                      href={project.links.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-sm border border-line px-5 py-2.5 text-sm transition-colors hover:border-muted"
+                    >
+                      <GithubIcon size={16} /> Código
+                    </a>
+                  )}
+                  {project.links?.video && (
+                    <a
+                      href={project.links.video}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-sm border border-line px-5 py-2.5 text-sm transition-colors hover:border-muted"
+                    >
+                      <ExternalLink size={16} /> Tráiler
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </motion.div>
 
